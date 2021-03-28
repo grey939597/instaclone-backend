@@ -6,6 +6,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// js -> db
 generator client {
   provider = "prisma-client-js"
 }
