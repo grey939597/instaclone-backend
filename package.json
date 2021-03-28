@@ -6,13 +6,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goodgoodcoder/instaclone-backend.git"
+    "url": "git+https://github.com/grey939597/instaclone-backend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goodgoodcoder/instaclone-backend/issues"
+    "url": "https://github.com/grey939597/instaclone-backend/issues"
   },
-  "homepage": "https://github.com/goodgoodcoder/instaclone-backend#readme"
+  "homepage": "https://github.com/grey939597/instaclone-backend#readme"
 }
