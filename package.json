@@ -20,7 +20,8 @@
   "homepage": "https://github.com/grey939597/instaclone-backend#readme",
   "dependencies": {
     "apollo-server": "^2.22.1",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.13.13",
