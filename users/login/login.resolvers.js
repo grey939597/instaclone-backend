@@ -23,7 +23,7 @@ export default {
         };
       }
 
-      // (3) issue a token and send it to the user
+      // (3) issue a token and send it to the user (toekn 발행)
       // Json Web Token (Server - Frontend 분리 되어 있을 때)
       const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
       return {
