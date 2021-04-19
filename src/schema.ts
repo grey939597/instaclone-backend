@@ -7,8 +7,8 @@ import {
 
 // ** : every folders, * : every filenames
 // loadFilesSync : export default로만 파일 불러오기 가능
-const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.js`);
-const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.js`);
+const loadedTypes = loadFilesSync(`${__dirname}/**/*.typeDefs.ts`);
+const loadedResolvers = loadFilesSync(`${__dirname}/**/*.resolvers.ts`);
 
 // The GraphQL schema
 const typeDefs = mergeTypeDefs(loadedTypes);

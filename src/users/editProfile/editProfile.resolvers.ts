@@ -1,11 +1,11 @@
-import bcrypt from "bcrypt";
-import client from "../../client";
+import * as bcrypt from "bcrypt";
+import { Resolver, Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
 
-const resolverFn = async (
+const resolverFn: Resolver = async (
   _,
   { firstName, lastName, username, email, password: newPassword },
-  { loggedInUser }
+  { loggedInUser, client }
 ) => {
   if (!loggedInUser) {
     return {
@@ -41,8 +41,10 @@ const resolverFn = async (
   }
 };
 
-export default {
+const resolvers: Resolvers = {
   Mutation: {
     editProfile: protectedResolver(resolverFn),
   },
 };
+
+export default resolvers;

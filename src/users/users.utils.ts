@@ -1,5 +1,6 @@
-import jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 import client from "../client";
+import { Resolver } from "../types";
 
 export const getUser = async (token) => {
   try {
@@ -7,9 +8,16 @@ export const getUser = async (token) => {
       return null;
     }
     // token 검증, return decoded token
-    const { id } = await jwt.verify(token, process.env.SECRET_KEY);
-    const user = await client.user.findUnique({ where: { id } });
-    return user ? user : null;
+    const verifiedToken: any = await jwt.verify(token, process.env.SECRET_KEY);
+    if ("id" in verifiedToken) {
+      const user = await client.user.findUnique({
+        where: { id: verifiedToken["id"] },
+      });
+      if (user) {
+        return user;
+      }
+    }
+    return null;
   } catch (e) {
     return null;
   }
@@ -17,7 +25,7 @@ export const getUser = async (token) => {
 
 // 함수를 return 하는 함수
 // 함수 (root, args, context, info) => { ... } 를 return
-export const protectedResolver = (ourResolver) => (
+export const protectedResolver = (ourResolver: Resolver) => (
   root,
   args,
   context,

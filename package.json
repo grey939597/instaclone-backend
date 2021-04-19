@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon --exec babel-node server",
+    "dev": "nodemon --exec ts-node src/server --ext ts,js",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio"
   },
@@ -33,6 +33,8 @@
     "@prisma/cli": "^2.19.0",
     "@prisma/client": "^2.19.0",
     "nodemon": "^2.0.7",
-    "prisma": "^2.19.0"
+    "prisma": "^2.19.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   }
 }
