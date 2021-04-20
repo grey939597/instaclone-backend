@@ -10,9 +10,9 @@ const resolverFn: Resolver = async (
 ) => {
   const { filename, createReadStream } = await avatar;
   const readStream = createReadStream(); // 파일 읽기
-  const path = `${process.cwd()}/uploads` // current working directory
+  const path = `${process.cwd()}/uploads`; // current working directory
   if (!existsSync(path)) {
-    mkdirSync(path)
+    mkdirSync(path);
   }
   const writeStream = createWriteStream(`${path}/${filename}`); // 파일 쓰기
   readStream.pipe(writeStream); // 읽기-쓰기 연결
