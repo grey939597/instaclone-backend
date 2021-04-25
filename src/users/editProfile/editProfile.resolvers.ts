@@ -8,20 +8,20 @@ const resolverFn: Resolver = async (
   { firstName, lastName, username, email, password: newPassword, bio, avatar },
   { loggedInUser, client }
 ) => {
-  const { filename, createReadStream } = await avatar;
-  const readStream = createReadStream(); // 파일 읽기
-  const path = `${process.cwd()}/uploads`; // current working directory
-  if (!existsSync(path)) {
-    mkdirSync(path);
+  let avatarUrl = null;
+  if (avatar) {
+    const { filename, createReadStream } = await avatar;
+    const readStream = createReadStream(); // 파일 읽기
+    const directoryName = `${process.cwd()}/uploads`; // current working directory
+    if (!existsSync(directoryName)) {
+      mkdirSync(directoryName);
+    }
+    const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+    const writeStream = createWriteStream(`${directoryName}/${newFilename}`); // 파일 쓰기
+    readStream.pipe(writeStream); // 읽기-쓰기 연결, 파일 저장
+    avatarUrl = `http://localhost:4000/static/${newFilename}`;
   }
-  const writeStream = createWriteStream(`${path}/${filename}`); // 파일 쓰기
-  readStream.pipe(writeStream); // 읽기-쓰기 연결
-  if (!loggedInUser) {
-    return {
-      ok: false,
-      error: "You need to login.",
-    };
-  }
+
   let uglyPassword = null;
   if (newPassword) {
     uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -36,6 +36,7 @@ const resolverFn: Resolver = async (
       email,
       bio,
       ...(uglyPassword && { password: uglyPassword }),
+      ...(avatarUrl && { avatar: avatarUrl }),
     },
   });
 

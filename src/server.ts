@@ -9,7 +9,7 @@ import { getUser } from "./users/users.utils";
 const PORT = process.env.PORT;
 
 // Create a server
-const server = new ApolloServer({
+const apollo = new ApolloServer({
   typeDefs,
   resolvers,
   context: async ({ req }) => {
@@ -22,8 +22,9 @@ const server = new ApolloServer({
 
 const app = express(); // express server 생성
 app.use(logger("tiny"));
+app.use("/static", express.static("uploads"));
 
-server.applyMiddleware({ app }); // apollo server를 express server와 연결
+apollo.applyMiddleware({ app }); // apollo server를 express server와 연결
 
 // Running a server
 app.listen({ port: PORT }, () => {
