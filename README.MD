@@ -39,8 +39,8 @@ Instaclone Backend.
 - [x] Unfollow User
 - [x] See Followers w/ Pagination
 - [x] See Following w/ Pagination
-- [x] Computed Fields
-- [ ] Search Users
+- [x] Computed Fields : DB에는 없지만 graphql schema에는 존재
+- [x] Search Users
 
 ## Photos
 
