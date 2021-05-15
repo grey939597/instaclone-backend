@@ -47,8 +47,8 @@ Instaclone Backend.
 - [x] Upload Photo (Parse #)
 - [x] See Photo
 - [x] See Hashtags
-- [ ] Search Photos
-- [ ] Edit Photo
+- [x] Search Photos
+- [x] Edit Photo
 - [ ] Like / Unlike Photo
 - [ ] See Photo Likes
 - [ ] See Feed
@@ -58,3 +58,8 @@ Instaclone Backend.
 - [ ] Comment on Photo
 - [ ] Edit Comment
 - [ ] Delete Comment
+
+## Notepad
+
+- Computed Field
+- typeDefs 작성 시, Mutation은 return type을 생성
