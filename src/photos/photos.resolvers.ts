@@ -18,6 +18,12 @@ const resolvers: Resolvers = {
           },
         },
       }),
+    likes: ({ id }, _, { client }) =>
+      client.like.count({
+        where: {
+          photoId: id,
+        },
+      }),
   },
   Hashtag: {
     photos: ({ id }, { page }, { client }) => {
