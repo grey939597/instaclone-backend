@@ -1,6 +1,7 @@
+import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
-export default {
+const resolvers: Resolvers = {
   Mutation: {
     uploadPhoto: protectedResolver(
       async (_, { file, caption }, { loggedInUser, client }) => {
@@ -38,3 +39,5 @@ export default {
     ),
   },
 };
+
+export default resolvers;

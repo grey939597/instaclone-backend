@@ -1,4 +1,6 @@
-export default {
+import { Resolvers } from "../../types";
+
+const resolvers: Resolvers = {
   Query: {
     seeFollowers: async (_, { username, page }, { client }) => {
       try {
@@ -45,3 +47,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

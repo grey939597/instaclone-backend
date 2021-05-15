@@ -1,5 +1,4 @@
 import { Resolvers } from "../../types";
-import { protectedResolver } from "../users.utils";
 
 const resolvers: Resolvers = {
   Query: {

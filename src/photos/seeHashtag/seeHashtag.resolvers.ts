@@ -2,9 +2,11 @@ import { Resolvers } from "../../types";
 
 const resolvers: Resolvers = {
   Query: {
-    seePhoto: (_, { id }, { client }) =>
-      client.photo.findUnique({
-        where: { id },
+    seeHashtag: (_, { hashtag }, { client }) =>
+      client.hashtag.findUnique({
+        where: {
+          hashtag,
+        },
       }),
   },
 };

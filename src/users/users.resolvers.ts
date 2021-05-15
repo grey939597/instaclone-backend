@@ -1,4 +1,6 @@
-export default {
+import { Resolvers } from "../types";
+
+const resolvers: Resolvers = {
   User: {
     totalFollowing: ({ id }, _, { client }) =>
       client.user.count({
@@ -53,5 +55,15 @@ export default {
       //   });
       // return exists.length !== 0;
     },
+    photos: ({ id }, _, { client }) =>
+      client.user
+        .findUnique({
+          where: {
+            id,
+          },
+        })
+        .photos(),
   },
 };
+
+export default resolvers;
