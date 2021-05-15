@@ -50,7 +50,7 @@ Instaclone Backend.
 - [x] Search Photos
 - [x] Edit Photo
 - [x] Like / Unlike Photo
-- [ ] See Photo Likes
+- [x] See Photo Likes
 - [ ] See Feed
 
 ## Comments
@@ -63,3 +63,4 @@ Instaclone Backend.
 
 - Computed Field
 - typeDefs 작성 시, Mutation은 return type을 생성
+- prisma: select는 선택한 싶은 데이터 field만 받아옴 / include는 결과에 relationship을 추가 (둘 동시에는 사용 불가)
