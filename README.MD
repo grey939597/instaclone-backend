@@ -61,6 +61,13 @@ Instaclone Backend.
 - [x] Delete Comment (isMine)
 - [x] Edit Comment
 
+## DMs
+
+- [ ] Create Room
+- [ ] Get Room
+- [ ] Send Message
+- [ ] Realtime Messages
+
 ## Notepad
 
 - Computed Field
