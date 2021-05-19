@@ -24,6 +24,12 @@ const resolvers: Resolvers = {
           photoId: id,
         },
       }),
+    comments: ({ id }, _, { client }) =>
+      client.comment.count({
+        where: {
+          photoId: id,
+        },
+      }),
   },
   Hashtag: {
     photos: ({ id }, { page }, { client }) => {

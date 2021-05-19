@@ -1,6 +1,5 @@
 import {
   loadFilesSync,
-  makeExecutableSchema,
   mergeTypeDefs,
   mergeResolvers,
 } from "graphql-tools";

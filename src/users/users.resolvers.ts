@@ -1,5 +1,7 @@
 import { Resolvers } from "../types";
 
+// Computed Field
+
 const resolvers: Resolvers = {
   User: {
     totalFollowing: ({ id }, _, { client }) =>

@@ -51,13 +51,15 @@ Instaclone Backend.
 - [x] Edit Photo
 - [x] Like / Unlike Photo
 - [x] See Photo Likes
+- [x] See Photo Comments
 - [x] See Feed
+- [ ] Delete Photo (isMine)
 
 ## Comments
 
-- [ ] Comment on Photo
+- [x] Comment on Photo
 - [ ] Edit Comment
-- [ ] Delete Comment
+- [ ] Delete Comment (isMine)
 
 ## Notepad
 
