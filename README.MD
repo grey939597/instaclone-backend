@@ -59,7 +59,7 @@ Instaclone Backend.
 
 - [x] Comment on Photo
 - [x] Delete Comment (isMine)
-- [ ] Edit Comment
+- [x] Edit Comment
 
 ## Notepad
 
