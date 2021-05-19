@@ -1,14 +1,15 @@
+import client from "../client";
 import { Resolvers } from "../types";
 
 const resolvers: Resolvers = {
   Photo: {
-    user: ({ userId }, _, { client }) =>
+    user: ({ userId }) =>
       client.user.findUnique({
         where: {
           id: userId,
         },
       }),
-    hashtags: ({ id }, _, { client }) =>
+    hashtags: ({ id }) =>
       client.hashtag.findMany({
         where: {
           photos: {
@@ -18,21 +19,27 @@ const resolvers: Resolvers = {
           },
         },
       }),
-    likes: ({ id }, _, { client }) =>
+    likes: ({ id }) =>
       client.like.count({
         where: {
           photoId: id,
         },
       }),
-    comments: ({ id }, _, { client }) =>
+    comments: ({ id }) =>
       client.comment.count({
         where: {
           photoId: id,
         },
       }),
+    isMine: ({ userId }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
+        return false;
+      }
+      return userId === loggedInUser.id;
+    },
   },
   Hashtag: {
-    photos: ({ id }, { page }, { client }) => {
+    photos: ({ id }, { page }) => {
       return client.hashtag
         .findUnique({
           where: {
@@ -44,7 +51,7 @@ const resolvers: Resolvers = {
           take: 5,
         });
     },
-    totalPhotos: ({ id }, _, { client }) =>
+    totalPhotos: ({ id }) =>
       client.photo.count({
         where: {
           hashtags: {
