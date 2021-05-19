@@ -2,6 +2,7 @@ import { existsSync, mkdirSync, createWriteStream } from "fs";
 import * as bcrypt from "bcrypt";
 import { Resolver, Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
+import { uploadToS3 } from "../../shared/shared.utils";
 
 const resolverFn: Resolver = async (
   _,
@@ -10,7 +11,8 @@ const resolverFn: Resolver = async (
 ) => {
   let avatarUrl = null;
   if (avatar) {
-    const { filename, createReadStream } = await avatar;
+    avatarUrl = await uploadToS3(avatar, loggedInUser.id, "avatars");
+    /*     const { filename, createReadStream } = await avatar;
     const readStream = createReadStream(); // 파일 읽기
     const directoryName = `${process.cwd()}/uploads`; // current working directory
     if (!existsSync(directoryName)) {
@@ -19,7 +21,7 @@ const resolverFn: Resolver = async (
     const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
     const writeStream = createWriteStream(`${directoryName}/${newFilename}`); // 파일 쓰기
     readStream.pipe(writeStream); // 읽기-쓰기 연결, 파일 저장
-    avatarUrl = `http://localhost:4000/static/${newFilename}`;
+    avatarUrl = `http://localhost:4000/static/${newFilename}`; */
   }
 
   let uglyPassword = null;
