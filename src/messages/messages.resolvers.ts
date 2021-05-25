@@ -18,7 +18,7 @@ const resolvers: Resolvers = {
         take: 20,
         ...(lastId && { cursor: { id: lastId } }),
       }),
-    unreadTotal: ({ id }, { loggedInUser }) => {
+    unreadTotal: ({ id }, _, { loggedInUser }) => {
       if (!loggedInUser) {
         return 0;
       }
@@ -34,6 +34,14 @@ const resolvers: Resolvers = {
         },
       });
     },
+  },
+  Message: {
+    user: ({ id }) =>
+      client.message
+        .findUnique({
+          where: { id },
+        })
+        .user(),
   },
 };
 
