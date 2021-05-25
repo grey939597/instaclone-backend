@@ -75,3 +75,5 @@ Instaclone Backend.
 - Computed Field
 - typeDefs 작성 시, Mutation은 return type을 생성
 - prisma: select는 선택한 싶은 데이터 field만 받아옴 / include는 결과에 relationship을 추가 (둘 동시에는 사용 불가)
+- GraphQl - Subscription : realtime and websocket
+- Websocket은 req, res 대신 Connection (http는 req, res)
