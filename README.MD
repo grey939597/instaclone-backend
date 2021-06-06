@@ -68,7 +68,7 @@ Instaclone Backend.
 - [x] See Room
 - [x] Computed Field
 - [x] See(Read) Message
-- [ ] Realtime Messages
+- [x] Realtime Messages
 
 ## Notepad
 

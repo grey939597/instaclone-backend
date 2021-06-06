@@ -77,6 +77,7 @@ const resolverFn: Resolver = async (
       },
     });
 
+    // Event를 Publish (triggerName, payload)
     pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });
 
     return {
