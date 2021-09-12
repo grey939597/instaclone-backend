@@ -28,11 +28,27 @@ const resolvers = {
 
         return withFilter(
           () => pubsub.asyncIterator(NEW_MESSAGE),
-          (payload, { id }, { loggedInUser }) => {
+          async (payload, { id }, { loggedInUser }) => {
             const {
               roomUpdates: { roomId },
             } = payload;
-            return roomId === id;
+            if (roomId === id) {
+              const room = await client.room.findFirst({
+                where: {
+                  id: args.id, // roomId가 맞는지 확인
+                  users: {
+                    some: {
+                      id: loggedInUser.id,
+                    },
+                  }, // loggedInUser가 room에 존재하는지 확인
+                },
+                select: {
+                  id: true,
+                },
+              });
+              return room ? true : false;
+            }
+            return false;
           }
         )(root, args, context, info);
       },
